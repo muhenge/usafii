@@ -8,7 +8,10 @@ class RegistrationsController < Devise::RegistrationsController
         # render_jsonapi_response(resource)
         @user = User.new(sign_up_params)
         if @user.save
-            render json: @user
+            render json: {jwt: encode_token({
+                id: @user.id,
+                username: @user.username
+            })}
         else
             render json: @user.errors
         end
