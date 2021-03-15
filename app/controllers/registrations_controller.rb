@@ -3,8 +3,7 @@ class RegistrationsController < Devise::RegistrationsController
         @user = User.new(sign_up_params)
         if @user.save
             render json: {jwt: encode_token({
-                id: @user.id,
-                username: @user.username
+                id: @client.id
             })}
         else
             render json: @user.errors
