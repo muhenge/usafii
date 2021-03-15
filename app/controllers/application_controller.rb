@@ -1,13 +1,13 @@
 class ApplicationController < ActionController::API
     before_action :configure_devise_parameters, if: :devise_controller?
 
-    def render_jsonapi_response(resource)
-        if resource.errors.empty?
-          render jsonapi: resource
-        else
-          render jsonapi_errors: resource.errors, status: 400
-        end
-    end 
+    # def render_jsonapi_response(resource)
+    #     if resource.errors.empty?
+    #       render jsonapi: resource
+    #     else
+    #       render jsonapi_errors: resource.errors, status: 400
+    #     end
+    # end 
 
     def encode_token(payload = {})
         exp = 24.hours.from_now
