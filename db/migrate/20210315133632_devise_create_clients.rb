@@ -4,7 +4,7 @@ class DeviseCreateClients < ActiveRecord::Migration[6.1]
   def change
     create_table :clients do |t|
       ## Database authenticatable
-      t.string :username,            null: false, default: ""
+      t.string :client_username,     null: false, default: ""
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
@@ -36,7 +36,7 @@ class DeviseCreateClients < ActiveRecord::Migration[6.1]
 
       t.timestamps null: false
     end
-
+    add_index :clients, :client_username,                unique: true
     add_index :clients, :email,                unique: true
     add_index :clients, :reset_password_token, unique: true
     # add_index :clients, :confirmation_token,   unique: true

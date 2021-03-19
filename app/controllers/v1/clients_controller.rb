@@ -12,7 +12,7 @@ class V1::ClientsController < ApplicationController
     private
 
     def user_params
-        params.require(:client).permit(:email)
+        params.require(:client).permit(:email,:user_id)
     end
 
     private

@@ -4,7 +4,8 @@ class ClientsRegistrationsController < Devise::RegistrationsController
         if @client.save
             render json: {jwt: encode_token({
                 id: @client.id,
-                email: @client.email
+                email: @client.email,
+                client_username: @client.client_username
             })}
         else
             render json: @client.errors

@@ -10,20 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_16_071103) do
+ActiveRecord::Schema.define(version: 2021_03_19_065340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
-    t.string "location"
     t.datetime "time"
+    t.string "loc"
     t.boolean "resp"
+    t.bigint "user_id", null: false
+    t.bigint "client_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_appointments_on_client_id"
+    t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
   create_table "clients", force: :cascade do |t|
+    t.string "client_username", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -31,20 +36,15 @@ ActiveRecord::Schema.define(version: 2021_03_16_071103) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_username"], name: "index_clients_on_client_username", unique: true
     t.index ["email"], name: "index_clients_on_email", unique: true
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
   end
 
-  create_table "cuts", force: :cascade do |t|
-    t.string "name"
-    t.integer "price"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "jwt_denylists", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table "jwt_denylist", force: :cascade do |t|
+    t.string "jti", null: false
+    t.datetime "expired_at", null: false
+    t.index ["jti"], name: "index_jwt_denylist_on_jti"
   end
 
   create_table "users", force: :cascade do |t|
@@ -68,4 +68,6 @@ ActiveRecord::Schema.define(version: 2021_03_16_071103) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "appointments", "clients"
+  add_foreign_key "appointments", "users"
 end

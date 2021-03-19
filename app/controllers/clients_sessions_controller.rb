@@ -5,7 +5,7 @@ class ClientsSessionsController < Devise::SessionsController
         sign_in(resource_name, resource)
         yield resource if block_given?
         render json: {jwt: encode_token({
-          id: @client.id
+          id: @client.email
         })}
     end
 end
