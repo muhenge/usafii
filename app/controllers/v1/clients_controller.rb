@@ -12,7 +12,7 @@ class V1::ClientsController < ApplicationController
     private
 
     def user_params
-        params.require(:client).permit(:email,:user_id)
+        params.require(:client).permit(:email, :appointment_id)
     end
 
     private
