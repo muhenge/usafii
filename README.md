@@ -1,24 +1,30 @@
-# README
+# this an API for Ruby on Rails and JWT
+> use only POST request for both Sign up and Login system
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Sign up 
 
-Things you may want to cover:
+endpoint : https://usafii.herokuapp.com/users/
 
-* Ruby version
+Body json : ```{
+                  "user":{
+                  "firstname":"any firstname",
+                  "lastname":"any lastname",
+                  "username":"any username",
+                  "about":"this is the about",
+                  "email":"any@gmail.com",
+                  "password":"123456"
+                  }
+                }```
+### Login
 
-* System dependencies
+endpoint : https://usafii.herokuapp.com/users/sign_in
 
-* Configuration
+Body json : ```{
+                  "email":"any@gmail.com",
+                  "password":"123456"
+                  }
+                }```
+    
+## Response
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* An auto generated JWT token
