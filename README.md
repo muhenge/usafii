@@ -1,4 +1,4 @@
-# this an API for Ruby on Rails and JWT
+# This an API for authentication system using Ruby on Rails and JWT
 > use only POST request for both Sign up and Login system
 
 ### Sign up 
