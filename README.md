@@ -5,8 +5,10 @@ Base URL : https://usafii.herokuapp.com
 
 ### Sign up 
 endpoint: POST `/users`
-Body json : ```{
-                  "user":{
+
+Body json : 
+```{
+            "user":{
                   "firstname":"any firstname",
                   "lastname":"any lastname",
                   "username":"any username",
@@ -19,7 +21,9 @@ Body json : ```{
 
 endpoint : POST `/users/sign_in`
 
-Body json : ```{
+Body json :
+
+```{
                   "user":"email":"any@gmail.com",
                   "password":"123456"
                   }
