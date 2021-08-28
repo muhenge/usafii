@@ -1,10 +1,10 @@
 # This an API for authentication system using Ruby on Rails and JWT
 > use only POST request for both Sign up and Login system
 
+Base URL : https://usafii.herokuapp.com
+
 ### Sign up 
-
-endpoint : https://usafii.herokuapp.com/users/
-
+endpoint: POST `/users`
 Body json : ```{
                   "user":{
                   "firstname":"any firstname",
@@ -17,10 +17,10 @@ Body json : ```{
                 }```
 ### Login
 
-endpoint : https://usafii.herokuapp.com/users/sign_in
+endpoint : POST `/users/sign_in`
 
 Body json : ```{
-                  "email":"any@gmail.com",
+                  "user":"email":"any@gmail.com",
                   "password":"123456"
                   }
                 }```
